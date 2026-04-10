@@ -6,9 +6,4 @@
         b-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
         resolution = <4>;
     };
-
-    sensors {
-        compatible = "zmk,sensors";
-        sensors = <&encoder_right>;
-    };
 };
