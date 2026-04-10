@@ -6,7 +6,7 @@ include:
     artifact-name: sofle_dongle-nice_nano
     cmake-args: >-
       -DCONFIG_ZMK_STUDIO=y
-      -DCONFIG_ZMK_STUDIO_LOCKING=n
+      -DCONFIG_ZMK_STUDIO_LOCKING=y
       -DCONFIG_ZMK_BLE=y
       -DCONFIG_BT=y
       -DCONFIG_BT_CENTRAL=y
