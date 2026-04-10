@@ -22,7 +22,6 @@ include:
     cmake-args: >-
       -DCONFIG_ZMK_SPLIT=y
       -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-      -DCONFIG_ZMK_SPLIT_KEYMAP_CENTRAL_ONLY=y
       -DCONFIG_BT_DEVICE_NAME=\"SofleL\"
       -DCONFIG_ZMK_KEYBOARD_NAME=\"SofleL\"
 
@@ -33,7 +32,6 @@ include:
     cmake-args: >-
       -DCONFIG_ZMK_SPLIT=y
       -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-      -DCONFIG_ZMK_SPLIT_KEYMAP_CENTRAL_ONLY=y
       -DCONFIG_BT_DEVICE_NAME=\"SofleR\"
       -DCONFIG_ZMK_KEYBOARD_NAME=\"SofleR\"
 
