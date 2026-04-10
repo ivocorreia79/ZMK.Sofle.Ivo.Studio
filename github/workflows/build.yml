@@ -14,5 +14,5 @@ jobs:
     with:
       config_path: config
       build_matrix_path: build.yaml
-      archive_name: firmware
+      archive_name: ZMK.Sofle.Ivo.Studio.firmware
       run-in-container: true
