@@ -16,3 +16,22 @@ jobs:
       build_matrix_path: build.yaml
       archive_name: ZMK.Sofle.Ivo.Studio.firmware
       run-in-container: true
+
+
+- name: Dump /chosen and physical-layout from zephyr.dts
+  if: always()
+  run: |
+    echo "=== zephyr.dts locations ==="
+    find /__w/_temp -path '*/zephyr/zephyr.dts' -print || true
+
+    DTS="$(find /__w/_temp -path '*/zephyr/zephyr.dts' | head -n 1)"
+    echo "=== using: $DTS ==="
+
+    echo "=== /chosen section ==="
+    sed -n '/chosen {/,/};/p' "$DTS" || true
+
+    echo "=== grep zmk,physical-layout ==="
+    grep -n "zmk,physical-layout" "$DTS" || true
+
+    echo "=== grep physical_layout0 node ==="
+    grep -n "physical_layout0" "$DTS" || true
