@@ -12,8 +12,8 @@ include:
       -DCONFIG_BT_PERIPHERAL=y
       -DCONFIG_EC11=n
       -DCONFIG_ZMK_USB=y
-      -DCONFIG_BT_DEVICE_NAME=\"SofleD\"
-      -DCONFIG_ZMK_KEYBOARD_NAME=\"SofleD\"
+      -DCONFIG_BT_DEVICE_NAME=\"Sofle\"
+      -DCONFIG_ZMK_KEYBOARD_NAME=\"Sofle\"
 
   # -------- LEFT (PERIPHERAL) ----------
   - board: nice_nano
