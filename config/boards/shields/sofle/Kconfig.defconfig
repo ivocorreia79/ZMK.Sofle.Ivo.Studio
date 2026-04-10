@@ -21,3 +21,13 @@ config BT_MAX_PAIRED
     default 7
 
 endif
+
+if SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
+
+config EC11
+    default y
+
+config EC11_TRIGGER_GLOBAL_THREAD
+    default y
+
+endif
