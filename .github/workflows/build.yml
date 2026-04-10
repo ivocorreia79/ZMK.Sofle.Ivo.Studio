@@ -1,0 +1,57 @@
+name: Build ZMK firmware
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: urob/zmk-actions/.github/workflows/build-user-config.yml@v3
+    with:
+      config_path: config
+      build_matrix_path: build.yaml
+      archive_name: ZMK.Sofle.Ivo.Studio.firmware
+      run-in-container: true
+
+  debug-dts:
+    name: Debug DTS (if available)
+    runs-on: ubuntu-latest
+    needs: build
+    if: always()
+    steps:
+      - name: Download artifacts (if any)
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+        continue-on-error: true
+
+      - name: List artifacts
+        run: |
+          echo "=== Artifacts folder ==="
+          ls -la artifacts || true
+          echo "=== Find zephyr.dts ==="
+          find artifacts -name zephyr.dts -print || true
+        continue-on-error: true
+
+      - name: Dump /chosen from zephyr.dts
+        run: |
+          DTS="$(find artifacts -name zephyr.dts | head -n 1)"
+          echo "DTS=$DTS"
+          if [ -z "$DTS" ]; then
+            echo "No zephyr.dts found in artifacts. (Build may have failed before producing/uploading it.)"
+            exit 0
+          fi
+
+          echo "=== /chosen section ==="
+          sed -n '/chosen {/,/};/p' "$DTS" || true
+
+          echo "=== grep zmk,physical-layout ==="
+          grep -n "zmk,physical-layout" "$DTS" || true
+
+          echo "=== grep physical_layout0 node ==="
+          grep -n "physical_layout0" "$DTS" || true
+        continue-on-error: true
