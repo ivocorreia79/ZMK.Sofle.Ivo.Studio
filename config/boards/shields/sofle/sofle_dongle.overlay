@@ -1,12 +1,17 @@
+/* config/boards/shields/sofle/sofle_dongle.overlay */
 #include <dt-bindings/zmk/matrix_transform.h>
+#include "sofle-layouts.dtsi"
 
-/ {
+ / {
     chosen {
         /* Dongle não tem teclas -> kscan falso */
         zmk,kscan = &mock_kscan;
 
-        /* O dongle precisa do transform para mapear eventos vindos das metades */
-        zmk,matrix_transform = &default_transform;
+        /* Transform correto (nota: hífen, não underscore) */
+        zmk,matrix-transform = &default_transform;
+
+        /* ESSENCIAL para ZMK Studio */
+        zmk,physical-layout = &physical_layout0;
     };
 
     /* kscan mock (obrigatório em dongles sem teclas) */
@@ -17,10 +22,7 @@
         events = <0>;
     };
 
-    /*
-     * Matrix transform copiado do teu sofle.dtsi
-     * (mantém exatamente igual)
-     */
+    /* Matrix transform (como já tens) */
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <16>;
