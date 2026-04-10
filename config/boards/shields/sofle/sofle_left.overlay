@@ -1,9 +1,0 @@
-/ {
-    encoder_left: encoder_left {
-        compatible = "alps,ec11";
-        label = "ENCODER_LEFT";
-        a-gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
-        b-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
-        resolution = <4>;
-    };
-};
