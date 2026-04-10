@@ -6,9 +6,6 @@
         /* Dongle não tem teclas -> kscan falso */
         zmk,kscan = &mock_kscan;
 
-        /* Nome correto: com hífen */
-        zmk,matrix-transform = &default_transform;
-
         /* Essencial para ZMK Studio */
         zmk,physical-layout = &physical_layout0;
     };
@@ -21,7 +18,7 @@
         events = <0>;
     };
 
-    /* Matrix transform */
+    /* Matrix transform (fica definido, mas NÃO no chosen) */
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <16>;
@@ -35,16 +32,15 @@
         >;
     };
 
-    /* Physical layout (ZMK Studio precisa de keys) */
+    /* Physical layout (ZMK Studio precisa de keys + transform) */
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Sofle";
 
+        /* obrigatória pelo binding do physical layout */
         transform = <&default_transform>;
 
-        /* IMPORTANTÍSSIMO: termina com ; e não com vírgula */
         keys =
-            /* cola aqui a tua lista completa */
             <&key_physical_attrs 100 100    0   37       0     0     0>
             , <&key_physical_attrs 100 100  100   37       0     0     0>
             , <&key_physical_attrs 100 100  200   12       0     0     0>
